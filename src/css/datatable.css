@@ -1,0 +1,40 @@
+[data-column-id="mealDate"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="mealTime"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="mealSelected"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="moreInformation"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+
+
+[data-column-id="exerciseDate"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="exerciseType"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="timeSpent"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+
+
+[data-column-id="bpReading"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}
+[data-column-id="readingDate"].rdt_TableCol {
+    background-color: #191970;
+    color: white;
+}

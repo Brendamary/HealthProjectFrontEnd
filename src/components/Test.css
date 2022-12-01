@@ -1,0 +1,23 @@
+.navbar1 {
+    background-color: #060b26;
+    height: 60px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+   
+  }
+  .sidebar1 {
+    
+    background-color:aqua;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+      
+  }
+  .main {
+    background-color: #fff;
+  }

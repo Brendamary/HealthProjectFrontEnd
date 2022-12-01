@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import '~antd/dist/reset.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.dashboard, .appointments {
+   display: flex;
+   height: 90vh;
+   align-items: center;
+   justify-content: center;
+   font-size: 3rem;
+   background-color: aqua;
+   margin-left: 230px;
+
+}
