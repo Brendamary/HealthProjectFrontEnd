@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
@@ -10,6 +10,7 @@ import '../components/Dashboard.css';
 import TopNavBar from '../components/TopNavBar';
 import CustomDialog from '../components/CustomDialog';
 import axios from 'axios';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 
 function Appointments() {
@@ -17,6 +18,7 @@ function Appointments() {
     const [dt, setDt] = useState(moment());
     const [appointmentdetails, setAppointmentDetails] = useState(null);
     const currentDate = new Date().toLocaleDateString();
+    const [loadingInProgress, setLoading] = useState(true);
     const [Dialog, setDialog] = useState({
       Title: "",
       Message: "",
@@ -30,6 +32,7 @@ function Appointments() {
 
      //executed every time you render. To stop endless loop of render add the empty square brackets as second variable in useEffect()
      useEffect(() => {
+    
        getUserAppointments();
      }, []);
 
@@ -38,6 +41,7 @@ function Appointments() {
           .then(response => {
              
               setUserAppointments(response.data);
+              setLoading(false);
 
               
           }).catch( error => {
@@ -110,11 +114,18 @@ function Appointments() {
   
      }
 
+
+  if(loggedInUser === null) {
+    
+  return <Navigate to={{ pathname: '/login' }} />
+  }
+  else {   
+  return (
       
-    return (
       
       <>
       { 
+         
           console.log(userAppointments)}
           <TopNavBar />
       <div className="nav-md body allpages">
@@ -132,7 +143,12 @@ function Appointments() {
           
                   <TabPanel>
                       <div className="x_panel">
-                        
+                        {
+                             userAppointments === null ? (
+                              <div className="loader-container"><ClipLoader color={'#000'} size={30} /></div>
+                          ) :
+                      
+                        <div>
                         { userAppointments.length > 0 ?
                          userAppointments.map((appointment, i) => 
                         <article id={i} className="media event">
@@ -150,6 +166,8 @@ function Appointments() {
                          <div style={{padding: 20, color: "#191970", fontSize: 14}}>You have no upcoming Appointments</div>
                         
                         }
+                        </div>
+                      }
                        
                       
                       </div>
@@ -171,7 +189,7 @@ function Appointments() {
                                       timeFormat="hh:mm A"
                                       onChange={val => setDt(val)}
                                       /> <br />
-                                      {/* <div><b>Date:</b> {dt.format('LLL')}</div> */}
+                                      
                                   </div>
                               </div>
                               Appointment Details: 
@@ -199,6 +217,7 @@ function Appointments() {
   { Dialog.isLoading && <CustomDialog DialogStatus={OnCloseDialog} Title={Dialog.Title} Message={Dialog.Message} />}
   </>
     );
+ }
 }
 
 export default Appointments

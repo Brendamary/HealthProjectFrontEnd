@@ -4,18 +4,18 @@ import '../components/Dashboard.css';
 import * as BiIcons from 'react-icons/bi';
 import * as BsIcons from 'react-icons/bs';
 import {IconContext} from 'react-icons';
+import { useNavigate, Navigate } from "react-router-dom";
 import NavBar from '../components/NavBar';
 import TopNavBar from '../components/TopNavBar';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import Login from './Login';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 function Dashboard() {
-    const navigate = useNavigate();
 
-    const [appointmentCount, setAppointmentCount] = useState('');
-    const [totalTimeExerciseSpent, setTimeSpentOnExercise] = useState('');
-    const [latestbpreading, setLatestBpReading] = useState('');
+    const loggedInUser = localStorage.getItem("user");
+    const [appointmentCount, setAppointmentCount] = useState(null);
+    const [totalTimeExerciseSpent, setTimeSpentOnExercise] = useState(null);
+    const [latestbpreading, setLatestBpReading] = useState(null);
     let currentMonth = new Date().getMonth();
     const Months = [
         { label: "January", value: 1 },
@@ -31,16 +31,13 @@ function Dashboard() {
         { label: "November", value: 11 },
         { label: "December", value: 12 }
         ];
-
-    const loggedInUser = localStorage.getItem("user");
+   
     useEffect(() => {
-       
-
         getUserAppointments();
         getTimeSpentOnExercise();
         getUserBpReadings();
-      }, []);
 
+      }, []);
 
     const getUserAppointments = () => {
         axios.get('/GetAppointments/' + loggedInUser)
@@ -56,8 +53,6 @@ function Dashboard() {
 
         let selectedMonth = Months[currentMonth].label;
 
-      
-      
         const postData = { username: loggedInUser, month: selectedMonth }
 
         axios.post('/GetTimeSpendOnLastMonth', postData).then(response => {
@@ -77,20 +72,19 @@ function Dashboard() {
     }
 
     if(loggedInUser === null) {
-        return <Login />
+       
+        return <Navigate to={{ pathname: '/login' }} />
     }
-
-
+    else {
+       
     return (
 
-     
         <>
           <TopNavBar />
             <div className="nav-md container body allpages">
            
             <div className="main_container">
-                
-            
+                          
             {/* page content */}
             <div className="right_col" role="main" style={{marginLeft: "270px"}}>
             <IconContext.Provider value={{ color: '#000' }}>
@@ -99,7 +93,7 @@ function Dashboard() {
                 <div className="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div className="tile-stats">
                     <div className="icon"><BsIcons.BsCalendarEvent style={{fontSize: "60px", color: "#191970"}} /></div>
-                    <div className="count">{appointmentCount.length  == 0 ? 0 : appointmentCount.length}</div>
+                    <div className="count">{appointmentCount  == null ? <div className="loader-container"><ClipLoader color={'#000'} size={30} /></div> : appointmentCount.length}</div>
                     <h3>Upcoming Appointments</h3>
                     <p>Scheduled Appontments.</p>
                     </div>
@@ -107,7 +101,7 @@ function Dashboard() {
                 <div className="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div className="tile-stats">
                     <div className="icon"><BiIcons.BiTime style={{fontSize: "60px", color: "#191970"}}/></div>
-                    <div className="count">{totalTimeExerciseSpent == 0 ? 0 : totalTimeExerciseSpent}</div>
+                    <div className="count">{totalTimeExerciseSpent == null ? <div className="loader-container"><ClipLoader color={'#000'} size={30} /></div> : totalTimeExerciseSpent}</div>
                     <h3>Time Spent on Exercise</h3>
                     <p>In current month in Minutes.</p>
                     </div>
@@ -115,7 +109,7 @@ function Dashboard() {
                 <div className="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div className="tile-stats">
                     <div className="icon"><BsIcons.BsFillCalculatorFill style={{fontSize: "60px", color: "#191970"}}/></div>
-                    <div className="count">{latestbpreading == 0? 0 : latestbpreading + "mmHg" }</div>
+                    <div className="count">{latestbpreading == null ? <div className="loader-container"><ClipLoader color={'#000'} size={30} /></div> : latestbpreading === 0 ? latestbpreading : latestbpreading + " mmHg" }</div>
                     <h3>Latest Reading</h3>
                     <p>Most recent reading</p>
                     </div>
@@ -162,6 +156,7 @@ function Dashboard() {
         
     
     );
+    }
 }
 
 export default Dashboard

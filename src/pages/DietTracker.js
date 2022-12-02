@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import ClipLoader from 'react-spinners/ClipLoader';
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
@@ -231,7 +232,17 @@ function DietTracker() {
 
      
     
-       }
+    }
+
+
+    if(loggedInUser === null) {
+    
+    return <Navigate to={{ pathname: '/login' }} />
+    }
+    else {
+        console.log("Meals");
+        console.log(monthlyMeals);
+       
     return (
         <>
           <TopNavBar />
@@ -293,8 +304,10 @@ function DietTracker() {
                                 <div className="w_center w_55"> </div>
                                 <div className=" w_20" style={{marginLeft: "30px", fontWeight: "bold"}}><p>No. Of Servings</p></div>
                             </div>
-
+                                
                             {
+                                
+                                monthlyMeals === null ? <div className="loader-container"><ClipLoader color={'#000'} size={30} /></div> :
                                 monthlyMeals.length > 0 ?
 
                                 monthlyMeals.map((monthlymeal, i) =>
@@ -497,6 +510,7 @@ function DietTracker() {
         { Dialog.isLoading && <CustomDialog DialogStatus={OnCloseDialog} Title={Dialog.Title} Message={Dialog.Message} />}
         </>
     );
+   }
 }
 
 export default DietTracker

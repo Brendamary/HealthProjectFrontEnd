@@ -19,7 +19,7 @@ function App() {
         
       <div className='maincontent'>
       <Routes>
-        <Route path='/' exact element={<Dashboard />}/>
+        <Route path='/dashboard' exact element={<Dashboard />}/>
         <Route path='/appointments' element={<Appointments />}/>
         <Route path='/bpreadings' element={<BpReadings />}/>
         <Route path='/diettracker' element={<DietTracker />}/>

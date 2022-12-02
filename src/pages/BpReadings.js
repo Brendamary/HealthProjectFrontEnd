@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
@@ -150,6 +150,13 @@ function BpReadings() {
           sortable: true,
         },  
       ];  
+
+    
+    if(loggedInUser === null) {
+    
+    return <Navigate to={{ pathname: '/login' }} />
+    }
+    else {
     return (
         <>
           <TopNavBar />
@@ -227,6 +234,7 @@ function BpReadings() {
         { Dialog.isLoading && <CustomDialog DialogStatus={OnCloseDialog} Title={Dialog.Title} Message={Dialog.Message} />}
         </>
     );
+ }
 }
 
 export default BpReadings

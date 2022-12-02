@@ -19,6 +19,7 @@
     "onsenui": "^2.12.6",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
+    "react-client-session": "^0.0.8",
     "react-data-table-component": "^7.5.3",
     "react-datepicker": "^4.8.0",
     "react-datetime": "^3.2.0",
@@ -31,6 +32,7 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-select": "^5.6.1",
+    "react-spinners": "^0.13.6",
     "react-tabs": "^5.1.0",
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"

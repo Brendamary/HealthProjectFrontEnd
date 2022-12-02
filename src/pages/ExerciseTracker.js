@@ -12,7 +12,7 @@ import DataTable from 'react-data-table-component';
 import TopNavBar from '../components/TopNavBar';
 import CustomDialog from '../components/CustomDialog';
 import FilterComponent from '../components/FilterComponent';
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function ExerciseTracker() {
 
@@ -209,7 +209,14 @@ function ExerciseTracker() {
             e.preventDefault()
           
             getMonthlyExercise();
-       }
+    }
+
+    
+    if(loggedInUser === null) {
+       
+        return <Navigate to={{ pathname: '/login' }} />
+    }
+    else {
 
     return (
         <>
@@ -417,6 +424,7 @@ function ExerciseTracker() {
         { Dialog.isLoading && <CustomDialog DialogStatus={OnCloseDialog} Title={Dialog.Title} Message={Dialog.Message} />}
         </>
     );
+    }
 }
 
 export default ExerciseTracker

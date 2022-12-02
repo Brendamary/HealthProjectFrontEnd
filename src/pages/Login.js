@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import LoadingDialog from '../components/LoadingDialog';
  import '../css/bootstrap.min.css';
 import '../css/custom.css';
 import '../css/custom.min.css';
@@ -16,7 +17,7 @@ function Login() {
   const [username, setUsername] = useState(null);
   const [password,setPassword] = useState(null);
   const [data, setdata] = useState({username: '',  password: '' });
-
+  const [cliploader, setClipLoader] = useState(false);
   const [Dialog, setDialog] = useState({
       Title: "",
       Message: "",
@@ -29,9 +30,16 @@ function Login() {
     axios.get('/User/GetDetails/' + username)
     .then(response => {
        
+       
         localStorage.setItem('user', username);
         localStorage.setItem('name', response.data.fullNames);
         localStorage.setItem('isLoggedIn', true);
+
+       
+        if(localStorage.getItem('user') !== null) {
+          setClipLoader(false);
+           navigate("/dashboard");
+        }
         
         
     }).catch( error => {
@@ -48,12 +56,9 @@ function Login() {
     e.preventDefault(); //prevent page refresh
     const postData = { username: username, password: password };
     axios.post('/User/Login', postData).then(response => {
-
-     
+      setClipLoader(true);
       getUserDetails();
-      navigate("/");
-
-     
+      
 
     }).catch( error => {
       if(error.response.status == 401) {
@@ -146,6 +151,7 @@ function Login() {
           </div>
         </div>
       </div>
+     {cliploader && <LoadingDialog />}
       { Dialog.isLoading && <CustomDialog DialogStatus={OnCloseDialog} Title={Dialog.Title} Message={Dialog.Message} />}
       </>
  );
