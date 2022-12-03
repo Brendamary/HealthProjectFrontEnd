@@ -1,5 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
+import axios from "axios";
 import '../components/Dashboard.css';
 import * as BiIcons from 'react-icons/bi';
 import * as BsIcons from 'react-icons/bs';
@@ -7,7 +8,6 @@ import {IconContext} from 'react-icons';
 import { useNavigate, Navigate } from "react-router-dom";
 import NavBar from '../components/NavBar';
 import TopNavBar from '../components/TopNavBar';
-import axios from 'axios';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 function Dashboard() {
