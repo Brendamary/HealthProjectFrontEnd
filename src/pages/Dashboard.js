@@ -5,8 +5,7 @@ import '../components/Dashboard.css';
 import * as BiIcons from 'react-icons/bi';
 import * as BsIcons from 'react-icons/bs';
 import {IconContext} from 'react-icons';
-import { useNavigate, Navigate } from "react-router-dom";
-import NavBar from '../components/NavBar';
+import { Navigate } from "react-router-dom";
 import TopNavBar from '../components/TopNavBar';
 import { ClipLoader } from 'react-spinners/ClipLoader';
 
@@ -36,7 +35,7 @@ function Dashboard() {
         getUserAppointments();
         getTimeSpentOnExercise();
         getUserBpReadings();
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
     const getUserAppointments = () => {

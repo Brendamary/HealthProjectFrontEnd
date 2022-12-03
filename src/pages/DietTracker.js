@@ -54,7 +54,7 @@ function DietTracker() {
      useEffect(() => {
         getDietTaken();
         getMonthyMealsTaken();
-       
+       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
  
     const getDietTaken = () => {

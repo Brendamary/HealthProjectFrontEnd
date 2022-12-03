@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
@@ -33,6 +33,8 @@ function BpReadings() {
     //executed every time you render.
     useEffect(() => {
         getUserReadings();
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getUserReadings = () => {

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useNavigate, Navigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
-import DataTable from 'react-data-table-component';
 import '../components/Dashboard.css';
 import TopNavBar from '../components/TopNavBar';
 import CustomDialog from '../components/CustomDialog';
@@ -31,9 +30,10 @@ function Appointments() {
    
 
      //executed every time you render. To stop endless loop of render add the empty square brackets as second variable in useEffect()
-     useEffect(() => {
-    
+     useEffect(() => {   
        getUserAppointments();
+
+       // eslint-disable-next-line react-hooks/exhaustive-deps
      }, []);
 
       const getUserAppointments = () => {
@@ -72,7 +72,7 @@ function Appointments() {
 
         }).catch(error => {
 
-            if(error.response.status == 401) {
+            if(error.response.status === 401) {
                 setDialog({
                     Title: "UnSuccessful!!",
                     Message: error.response.data + " Try Again.",
@@ -152,12 +152,12 @@ function Appointments() {
                         { userAppointments.length > 0 ?
                          userAppointments.map((appointment, i) => 
                         <article id={i} className="media event">
-                            <a className="pull-left date" style={{width: "100px", backgroundColor: "#1a83ff"}}>
+                            <a href='' className="pull-left date" style={{width: "100px", backgroundColor: "#1a83ff"}}>
                             <p className="month">{monthNames[new Date(appointment.scheduledDate).getMonth()]}</p>
                             <p className="day">{new Date(appointment.scheduledDate).getDate()}</p>
                             </a>
                             <div className="media-body">
-                            <a className="title"></a>
+                            <a href='' className="title"></a>
                             <p style={{marginTop: "20px"}} className="title">{appointment.appointmentDescription}</p>
                             </div>
                         </article>

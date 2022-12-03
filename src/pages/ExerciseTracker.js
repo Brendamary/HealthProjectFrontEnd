@@ -51,6 +51,7 @@ function ExerciseTracker() {
      useEffect(() => {
         getExerciseTracker();
         getMonthlyExercise();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
  
     const getExerciseTracker = () => {
