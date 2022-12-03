@@ -10,7 +10,6 @@ import ExerciseTracker from './pages/ExerciseTracker';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import TopNavBar from './components/TopNavBar';
-import DatePickerTest from './components/DatePickerTest';
 
 function App() {
   return (
