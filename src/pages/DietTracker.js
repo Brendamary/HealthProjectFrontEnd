@@ -11,7 +11,6 @@ import '../css/datatable.css';
 import TopNavBar from '../components/TopNavBar';
 import CustomDialog from '../components/CustomDialog';
 import axios from 'axios';
-import { Chart } from "react-google-charts";
 import FilterComponent from '../components/FilterComponent';
 import Select from 'react-select';
 

@@ -5,7 +5,6 @@ import '../css/custom.css';
 import '../css/custom.min.css';
 import '../css/login.css';
 import { Link } from "react-router-dom";
-import Modal from "react-modal";
 import CustomDialog from '../components/CustomDialog';
 import { useNavigate } from "react-router-dom";
 import { BsBookHalf } from 'react-icons/bs'; 
@@ -16,7 +15,6 @@ function Register() {
     const [fullnames, setFullNames] = useState(null);
     const [email, setEmail] = useState(null);
     const [password,setPassword] = useState(null);
-    const [confirmPassword,setConfirmPassword] = useState(null);
     const [data, setdata] = useState({username: '', fullnames: '', email: '', password: '', confirmPassword:'' });
 
     const [Dialog, setDialog] = useState({
@@ -30,7 +28,7 @@ function Register() {
 
     let submit = (e) => {
         e.preventDefault(); //prevent page refresh
-        if(data.password != data.confirmPassword) {
+        if(data.password !== data.confirmPassword) {
             console.log("Validate");
             setDialog({
                 Title: "Password Error",
@@ -60,7 +58,7 @@ function Register() {
                 console.log("Reaches Here11111");
                 console.log(error.response.status);
                 console.log(error.response.data);
-                if(error.response.status == 401) {
+                if(error.response.status === 401) {
                     setDialog({
                         Title: "UnSuccessful!!",
                         Message: error.response.data + " Try Again.",
