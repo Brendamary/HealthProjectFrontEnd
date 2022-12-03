@@ -15,6 +15,7 @@ function Register() {
     const [fullnames, setFullNames] = useState(null);
     const [email, setEmail] = useState(null);
     const [password,setPassword] = useState(null);
+    const [confirmPassword,setConfirmPassword] = useState(null);
     const [data, setdata] = useState({username: '', fullnames: '', email: '', password: '', confirmPassword:'' });
 
     const [Dialog, setDialog] = useState({
