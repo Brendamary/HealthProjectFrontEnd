@@ -10,7 +10,7 @@ import '../components/Dashboard.css';
 import TopNavBar from '../components/TopNavBar';
 import CustomDialog from '../components/CustomDialog';
 import axios from 'axios';
-import ClipLoader from 'react-spinners/ClipLoader';
+import { ClipLoader } from 'react-spinners/ClipLoader';
 
 
 function Appointments() {

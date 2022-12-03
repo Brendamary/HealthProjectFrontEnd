@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Navigate } from "react-router-dom";
-import ClipLoader from 'react-spinners/ClipLoader';
+import { ClipLoader } from 'react-spinners/ClipLoader';
 import 'react-tabs/style/react-tabs.css';
 import DatePicker from 'react-datetime';
 import moment from 'moment';

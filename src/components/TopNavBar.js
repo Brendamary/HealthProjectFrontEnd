@@ -3,7 +3,7 @@ import './NavBar.css';
 import { Link, useNavigate  } from "react-router-dom";
 import {IconContext} from 'react-icons';
 import {Nav, NavDropdown, Navbar} from 'react-bootstrap';
-import { SidebarData } from "./SideBarData";
+import { SidebarData } from "./SideBarData.js";
 import * as IoIcons from 'react-icons/io';
 import * as MdIcons from 'react-icons/md';
 import * as BsIcons from 'react-icons/bs';

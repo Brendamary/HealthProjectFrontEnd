@@ -5,11 +5,10 @@ import '../css/custom.css';
 import '../css/custom.min.css';
 import '../css/login.css';
 import { Link } from "react-router-dom";
-import * as FaIcons from 'react-icons/fa';
 import Modal from "react-modal";
 import CustomDialog from '../components/CustomDialog';
 import { useNavigate } from "react-router-dom";
-import * as BsIcons from 'react-icons/bs';
+import { BsBookHalf } from 'react-icons/bs'; 
 
 function Register() {
 
@@ -130,7 +129,7 @@ function Register() {
         <>
         <div className='login'>
                 <div  style={{textAlign: "center", paddingTop: "80px"}}>
-                  <BsIcons.BsBookHalf style={{fontSize: "30px", color: "#191970", padding: "5px 6px", border: "1px solid #191970", borderRadius: "50%"}}/>
+                  <BsBookHalf style={{fontSize: "30px", color: "#191970", padding: "5px 6px", border: "1px solid #191970", borderRadius: "50%"}}/>
                   <span style={{color: "#191970", fontSize: 22}}>My HealthDiary!</span>
               </div>
              <div className="login_wrapper" style={{marginTop: 0}}>

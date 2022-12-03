@@ -8,7 +8,7 @@ import {IconContext} from 'react-icons';
 import { useNavigate, Navigate } from "react-router-dom";
 import NavBar from '../components/NavBar';
 import TopNavBar from '../components/TopNavBar';
-import ClipLoader from 'react-spinners/ClipLoader';
+import { ClipLoader } from 'react-spinners/ClipLoader';
 
 function Dashboard() {
 

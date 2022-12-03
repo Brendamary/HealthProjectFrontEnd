@@ -6,7 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import { FaBold } from 'react-icons/fa';
-import ClipLoader from 'react-spinners/ClipLoader';
+import { ClipLoader } from 'react-spinners/ClipLoader';
 
 function LoadingDialog() {
 
