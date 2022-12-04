@@ -37,6 +37,9 @@
       "react-app/jest"
     ]
   },
+"assets": [
+  "src/web.config"
+] ,
   "browserslist": {
     "production": [
       ">0.2%",
